@@ -16,3 +16,17 @@ func FetchAllPegawai(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, result)
 }
+
+func StorePegawai(c echo.Context) error {
+	nama := c.FormValue("nama")
+	alamat := c.FormValue("alamat")
+	telepon := c.FormValue("telepon")
+
+	result, err := models.StorePegawai(nama, alamat, telepon)
+	
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
+	}
+
+	return c.JSON(http.StatusOK, result)
+}
