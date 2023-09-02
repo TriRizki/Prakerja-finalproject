@@ -15,7 +15,10 @@ func Init() *echo.Echo {
     })
 	
     e.GET("/pegawai", controllers.FetchAllPegawai)
+	e.GET("/pegawai/:id", controllers.FetchById)
 	e.POST("/pegawai", controllers.StorePegawai)
+	e.PUT("/pegawai", controllers.UpdatePegawai)
+	e.DELETE("/pegawai/:id", controllers.DeletePegawai)
 
 	return e
 }
